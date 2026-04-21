@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Mogra&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+h1{
+    text-align: center;
+    top: 50%;
+    color: #007474;
+    font-family: 'Mogra', cursive;
+    font-size: 7.5rem;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: #eee;
+}
+
+button{
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
