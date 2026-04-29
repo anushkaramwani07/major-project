@@ -51,3 +51,10 @@ button{
     text-align:center;
     transform-origin: center;
 }
+
+/*This is for the buttons in the header on every page*/
+header a{
+    padding: 10px;
+    color: black;
+    border: 1px solid black;
+}

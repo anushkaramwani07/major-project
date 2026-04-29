@@ -19,3 +19,17 @@ if (button) {
     
 });
 }
+
+//helps randomly select and display what the uder chose
+const genreSelect = document.querySelectorAll("genreBtn");
+const manualResult = document.getElementById("manualResult");
+
+if(genreButtons.length > 0){
+    genreButtons.forEach(function (btn){
+
+        btn.addEventListener("click", function(){
+                const selected = btn.textContent;
+                manualResult.textContent = "You Picked: " + selected;
+        })
+    })
+}
