@@ -1,5 +1,5 @@
 
-
+const apiKey = "ce9abacc48c7d1abc05b7ee6f534452a";
 
 const genres = ["Action", "Comedy", "Horror", "crime"];
 
@@ -19,6 +19,15 @@ if (button) {
     
 });
 }
+async function testTMDB() {
+  const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=${ce9abacc48c7d1abc05b7ee6f534452a}');
+  const data = await response.json();
+
+  console.log(data);
+
+}
+
+testTMDB();
 
 //helps randomly select and display what the uder chose
 const genreSelect = document.querySelectorAll("genreBtn");
