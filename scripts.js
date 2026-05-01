@@ -1,4 +1,6 @@
 
+console.log("JS IS RUNNING ON THIS PAGE");
+
 const apiKey = "ce9abacc48c7d1abc05b7ee6f534452a";
 
 console.log("JS is connected!");
