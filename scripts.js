@@ -1,50 +1,14 @@
 
 const apiKey = "ce9abacc48c7d1abc05b7ee6f534452a";
 
-const genres = ["Action", "Comedy", "Horror", "crime"];
-
-// finds the "spinButton" element
-
-const result = document.getElementById("result");
-
-//it should not crash on pages with no spin the wheel feature:
-if (button) {
-
-    button.addEventListener("click", function () {
-        const randomIndex = Math.floor(Math.random() * genres.length);
-        const selectedGenre = genres[randomIndex];
-
-        //prints the result to webpage
-        result.textContent = "You Got: " + selectedGenre;
-    
-});
-}
+console.log("JS is connected!");
 async function testTMDB() {
-  const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=${ce9abacc48c7d1abc05b7ee6f534452a}');
+  const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
   const data = await response.json();
 
   console.log(data);
-
 }
-
 testTMDB();
-
-//helps randomly select and display what the uder chose
-const genreSelect = document.querySelectorAll("genreBtn");
-const manualResult = document.getElementById("manualResult");
-
-if(genreButtons.length > 0){
-    genreButtons.forEach(function (btn){
-
-        btn.addEventListener("click", function(){
-                const selected = btn.textContent;
-                manualResult.textContent = "You Picked: " + selected;
-        })
-    })
-}
-/*
-JavaScript only required for spin interaction, not for rendering the component.
-*/
 
 function wheelOfFortune(selector) {
   const node = document.querySelector(selector);
@@ -77,6 +41,39 @@ function wheelOfFortune(selector) {
     previousEndDegree = newEndDegree;
   });
 }
+
+
+const result = document.getElementById("result");
+/*
+//it should not crash on pages with no spin the wheel feature:
+if (button) {
+
+    button.addEventListener("click", function () {
+        const randomIndex = Math.floor(Math.random() * genres.length);
+        const selectedGenre = genres[randomIndex];
+
+        //prints the result to webpage
+        result.textContent = "You Got: " + selectedGenre;
+    
+});
+}
+
+//helps randomly select and display what the uder chose
+const genreSelect = document.querySelectorAll("genreBtn");
+const manualResult = document.getElementById("manualResult");
+
+if(genreButtons.length > 0){
+    genreButtons.forEach(function (btn){
+
+        btn.addEventListener("click", function(){
+                const selected = btn.textContent;
+                manualResult.textContent = "You Picked: " + selected;
+        })
+    })
+}
+
+JavaScript only required for spin interaction, not for rendering the component.
+*/
 
 // Usage
 wheelOfFortune('.ui-wheel-of-fortune');
