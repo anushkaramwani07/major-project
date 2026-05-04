@@ -1,32 +1,77 @@
 
 console.log("JS IS RUNNING ON THIS PAGE");
 
-const apiKey = "ce9abacc48c7d1abc05b7ee6f534452a";
+const genreMap = {
+  "Action": 28,
+  "Adventure": 12,
+  "Animation": 16,
+  "Comedy": 35,
+  "Crime": 80,
+  "Documentary": 99,
+  "Drama": 18,
+  "Family": 10751,
+  "Fantasy": 14,
+  "History": 36,
+  "Horror": 27,
+  "Music": 10402,
+  "Mystery": 9648,
+  "Romance": 10749,
+  "Science Fiction": 878,
+}
+
+
+// scripts for major project
+
+// first sign up for API Read Access Token and Key at https://www.themoviedb.org/settings/api
+// then use options copied from https://developer.themoviedb.org/reference/discover-movie
 
 const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZTlhYmFjYzQ4YzdkMWFiYzA1YjdlZTZmNTM0NDUyYSIsIm5iZiI6MTc3NzUwNDE0NS41MDgsInN1YiI6IjY5ZjI4ZjkxMmJmMWFjNDhiNmQ3MmZhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0U3LtyDpkEPx5jU38J2o6QD-hwkHYTIto7C-D_7Js2c'
-    /*Had initially: Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZTlhYmFjYzQ4YzdkMWFiYzA1YjdlZTZmNTM0NDUyYSIsIm5iZiI6MTc3NzUwNDE0NS41MDgsInN1YiI6IjY5ZjI4ZjkxMmJmMWFjNDhi'*/
-  }
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MjFiNzYwNjlmNjRiNjU5MmY4NGJiOTQ5YmQ5ZGVkNiIsIm5iZiI6MTc3NzkxNTYwMS41MzIsInN1YiI6IjY5ZjhkNmQxY2ZlMTA5OTNlYmRmNTczYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BOdM0xjg3W246TZQTxQtxeTRmgXZD73klu19tQkiWF8'
+    }
 };
 
-console.log("JS is connected!");
-async function testTMDB() {
-  //1. Fetch the data and wait for teh response
-  const response = await fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=35', options)
-  
- /*had initially: fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=comedy`, options); */
- //2. turn the response into JSON data 
- const data = await response.json();
 
- //3.to print the list
-  console.log("Comedy Movie list:", data.results);
-// https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=comedy', options
-  //console.log(data);
+// function for getting JSON data and returning it
+async function getData(url, opts) {
+    try {
+        const response = await fetch(url, opts);
+        if (response.ok) {
+            const result = await response.json();
+            return result;
+        } else {
+            throw(response.status);
+        }
+    } catch (error) {
+        console.error(error);
+    }
 }
-testTMDB();
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // get the list of genres and output to console
+    getData('https://api.themoviedb.org/3/genre/movie/list?language=en', options).then(function(result) {
+
+        console.log("genre list:", result);
+
+    });
+
+    // "comedy" is genre # 35, so if we search for that...
+    let genreNumber = 35;
+    let genreSearchURL = 'https://api.themoviedb.org/3/discover/movie?with_genres=' + genreNumber;
+    getData(genreSearchURL, options).then(function(result) {
+
+        console.log("discover results:", result);
+
+        // find the first item in those results
+        console.log("first result:", result.results[0].original_title);
+    });
+
+});
+
 
 function wheelOfFortune(selector) {
   const node = document.querySelector(selector);
@@ -60,38 +105,4 @@ function wheelOfFortune(selector) {
   });
 }
 
-
-const result = document.getElementById("result");
-/*
-//it should not crash on pages with no spin the wheel feature:
-if (button) {
-
-    button.addEventListener("click", function () {
-        const randomIndex = Math.floor(Math.random() * genres.length);
-        const selectedGenre = genres[randomIndex];
-
-        //prints the result to webpage
-        result.textContent = "You Got: " + selectedGenre;
-    
-});
-}
-
-//helps randomly select and display what the uder chose
-const genreSelect = document.querySelectorAll("genreBtn");
-const manualResult = document.getElementById("manualResult");
-
-if(genreButtons.length > 0){
-    genreButtons.forEach(function (btn){
-
-        btn.addEventListener("click", function(){
-                const selected = btn.textContent;
-                manualResult.textContent = "You Picked: " + selected;
-        })
-    })
-}
-
-JavaScript only required for spin interaction, not for rendering the component.
-*/
-
-// Usage
 wheelOfFortune('.ui-wheel-of-fortune');

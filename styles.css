@@ -89,7 +89,7 @@ site.header{
   direction: ltr;
   display: grid;
   position: relative;
-  width: 350px;
+  width: 450px;
 
   
   /* the little red triangle on top */
@@ -133,14 +133,14 @@ site.header{
       /* makes each <li> a triangle slice*/
       clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
       display: grid;
-      font-size: 5cqi;
+      font-size: 4cqi;
       grid-area: 1 / -1;
       padding-left: 1ch;
       /* Each slice is rotated evenly around the circle*/
       rotate: calc(360deg / var(--_items) * calc(var(--_idx) - 1));
       transform-origin: center right;
       user-select: none;
-      width: 50cqi;
+      width: 48cqi;
 
       &:nth-of-type(1) { --_idx: 1; }
       &:nth-of-type(2) { --_idx: 2; }
