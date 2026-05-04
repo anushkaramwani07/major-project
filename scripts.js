@@ -3,12 +3,28 @@ console.log("JS IS RUNNING ON THIS PAGE");
 
 const apiKey = "ce9abacc48c7d1abc05b7ee6f534452a";
 
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZTlhYmFjYzQ4YzdkMWFiYzA1YjdlZTZmNTM0NDUyYSIsIm5iZiI6MTc3NzUwNDE0NS41MDgsInN1YiI6IjY5ZjI4ZjkxMmJmMWFjNDhiNmQ3MmZhOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0U3LtyDpkEPx5jU38J2o6QD-hwkHYTIto7C-D_7Js2c'
+    /*Had initially: Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZTlhYmFjYzQ4YzdkMWFiYzA1YjdlZTZmNTM0NDUyYSIsIm5iZiI6MTc3NzUwNDE0NS41MDgsInN1YiI6IjY5ZjI4ZjkxMmJmMWFjNDhi'*/
+  }
+};
+
 console.log("JS is connected!");
 async function testTMDB() {
-  const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
-  const data = await response.json();
+  //1. Fetch the data and wait for teh response
+  const response = await fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=35', options)
+  
+ /*had initially: fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=comedy`, options); */
+ //2. turn the response into JSON data 
+ const data = await response.json();
 
-  console.log(data);
+ //3.to print the list
+  console.log("Comedy Movie list:", data.results);
+// https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=comedy', options
+  //console.log(data);
 }
 testTMDB();
 
