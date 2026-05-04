@@ -1,27 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Mogra&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
 
-h1{
-    text-align: center;
-    top: 50%;
-    color: #007474;
-    font-family: 'Mogra', cursive;
-    font-size: 7.5rem;
-}
-
-header{
+site.header{
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 15px;
-    background: #eee;
+    padding: 15px 40px;
+    background: #ffffff;
+    border-bottom: 1px solid #ddd
 }
 
-button{
+/*button{
     padding: 10px;
     margin: 5px;
     cursor: pointer;
-}
+}*/
 
-.spin-wheel{
+/*.spin-wheel{
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -51,14 +45,41 @@ button{
     text-align:center;
     transform-origin: center;
 }
+*/
 
-/*This is for the buttons in the header on every page*/
-header a{
-    padding: 10px;
-    color: black;
-    border: 1px solid black;
+.logo{
+    font-family: "Mogra", cursive;
+    font-size: 1.5rem;
+    color:#007474;
+    text-decoration: none;
 }
 
+.nav-links{
+    display: flex;
+    gap: 12px;  /*space between buttons*/
+}
+
+.nav-links a{
+    text-decoration: none;
+    color: #111;
+    padding: 8px 16px;
+    border-radius: 20px;
+
+    background: rgba(255, 255,255, 0.3);
+    backdrop-filter: blur(10px);
+    
+    border: 1px solid rgba(255, 255,255, 0.5);
+
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.nav-links a:hover{
+    background: rgba(1, 116, 116, 0.6);
+    color: white;
+}
+
+/*DO NOT MESS WITH THIS!*/
 :where(.ui-wheel-of-fortune) {
   /* 12 slices */
   --_items: 12;
@@ -137,9 +158,11 @@ header a{
   }
 }
 
-/* for demo */
-* { box-sizing: border-box; }
-body {
-	font-family: system-ui, sans-serif;
-	padding: 5cqi;
+#manual-selection{
+    display: none;
 }
+
+
+<!-- HTML !-->
+<button class="button-55" role="button">Button 55</button>
+

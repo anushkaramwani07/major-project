@@ -9,60 +9,39 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
+        <a href="index.html" class="logo">Movie Picker</a>
 
-        <!--
-        <select id="genre">
-            <option value="">Top Genre</option>
-            <option value="">Action</option>
-            <option value="">Comedy</option>
-            <option value="">Horror</option>
-            <option value="">Crime</option>
-        </select>
-        <button id="spinButton">Spin the wheel</button>
-        <button id="manualButton">Pick Manually</button>
-
-    <div class="spin-wheel">
-        <span class="segment">Segment 1</span>
-        <span class="segment">Segment 2</span>
-        <span class="segment">Segment 3</span>
-        <span class="segment">Segment 4</span>
-    </div> -->
-        <a href="index.html">Home</a>
-        <a href="spin.html">Spin the wheel</a>
-        <a href="manual.html">Pick Manually</a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="spin.html">Spin the wheel</a>
+            <a href="manual.html">Pick Manually</a>
+        </nav>
     </header>
 
-    <a href="spin.html">
-        Spin the Wheel
-    </a>
 
-    <a href="manual.html">
-        Pick Manually
-    </a>
-
-<fieldset class="ui-wheel-of-fortune">
-  <ul>
-    <li>ACTION</li>
-    <li>COMEDY</li>
-    <li>HORROR</li>
-    <li>CRIME</li>
-    <li>DRAMA</li>
-    <li>ROMANCE</li>
-    <li>SCIENCE FICTION</li>
-    <li>MYSTERY</li>
-    <li>CRIME</li>
-    <li>ADVENTURE</li>
-    <li>ANIMATION</li>
-    <li>FANTASY</li>
-  </ul>
-  <button type="button">SPIN</button>
-</fieldset>
+    <fieldset class="ui-wheel-of-fortune">
+        <ul>
+            <li>ACTION</li>
+            <li>COMEDY</li>
+            <li>HORROR</li>
+            <li>CRIME</li>
+            <li>DRAMA</li>
+            <li>ROMANCE</li>
+            <li>SCIENCE FICTION</li>
+            <li>MYSTERY</li>
+            <li>CRIME</li>
+            <li>ADVENTURE</li>
+            <li>ANIMATION</li>
+            <li>FANTASY</li>
+        </ul>
+        <button type="button">SPIN</button>
+    </fieldset>
 
     <p id="result"></p>
 
+<!-- keep this in here cause all the HTML elements would be loaded by this time! -->
     <script src="scripts.js"></script>
-
 </body>
 
 </html>
