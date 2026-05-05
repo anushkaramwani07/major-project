@@ -15,18 +15,28 @@
         <nav class="nav-links">
             <a href="index.html">Home</a>
             <a href="spin.html">Spin the wheel</a>
-            <a href="manual.html">Pick Manually</a>
         </nav>
     </header>
 
-    <div id="manual-selection">
-        <select id="genre">
-            <option value="">Top Genre</option>
-            <option>Action</option>
-            <option>Comedy</option>
-            <option>Horror</option>
-            <option>Crime</option>
+    <div class ="manual-picker">
+        <select id="nav-genre" class="nav-dropdown">
+            <option value="">Pick Manually</option>
+            <option value="ACTION">ACTION</option>
+            <option value="COMEDY">COMEDY</option>
+            <option value="HORROR">HORROR</option>
+            <option value="CRIME">CRIME</option>
+            <option value="DRAMA">DRAMA</option>
+            <option value="ROMANCE">ROMANCE</option>
+            <option value="SCIENCE FICTION">SCIENCE FICTION</option>
+            <option value="MYSTERY">MYSTERY</option>
+            <option value="ADVENTURE">ADVENTURE</option>
+            <option value="ANIMATION">ANIMATION</option>
+            <option value="FANTASY">FANTASY</option>
         </select>
-</body>
 
+        <button id="pick-button" type="button">PICK</button>
+
+        <p id="manual-result"></p>
+
+</body>
 </html>

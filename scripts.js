@@ -7,19 +7,13 @@ const genreMap = {
   "Animation": 16,
   "Comedy": 35,
   "Crime": 80,
-  "Documentary": 99,
   "Drama": 18,
-  "Family": 10751,
   "Fantasy": 14,
-  "History": 36,
   "Horror": 27,
-  "Music": 10402,
   "Mystery": 9648,
   "Romance": 10749,
   "Science Fiction": 878,
 }
-
-
 // scripts for major project
 
 // first sign up for API Read Access Token and Key at https://www.themoviedb.org/settings/api

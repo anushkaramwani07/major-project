@@ -63,7 +63,7 @@ site.header{
     text-decoration: none;
     color: #111;
     padding: 8px 16px;
-    border-radius: 20px;
+    border-radius: 15px;
 
     background: rgba(255, 255,255, 0.3);
     backdrop-filter: blur(10px);
@@ -79,6 +79,27 @@ site.header{
     color: white;
 }
 
+.nav-dropdown{
+    text-decoration: none;
+    color: #111;
+    padding: 8px 16px;
+    border-radius: 15px;
+
+    background: rgba(255, 255,255,0.3);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255,255, 0.5);
+
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    appearance: none;
+}
+
+.nav-dropdown:hover{
+    background: rgba(1, 116, 116, 0.6);
+    color: white;
+}
 /*DO NOT MESS WITH THIS!*/
 :where(.ui-wheel-of-fortune) {
   /* 12 slices */
@@ -161,8 +182,3 @@ site.header{
 #manual-selection{
     display: none;
 }
-
-
-<!-- HTML !-->
-<button class="button-55" role="button">Button 55</button>
-
