@@ -1,5 +1,13 @@
-
 console.log("JS IS RUNNING ON THIS PAGE");
+
+const genreSelect = document.getElementById("genre-selection");
+
+//console shows whatever user picked.
+genreSelect.addEventListener("change", function(){
+    const selectGenre = this.value;
+
+    console.log("selected genre:", selectGenre);
+});
 
 const genreMap = {
   "Action": 28,
