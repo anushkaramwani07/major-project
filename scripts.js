@@ -9,8 +9,6 @@ genreSelect.addEventListener("change", function(){
     console.log("selected genre:", selectGenre);
 });
 
-
-
 const genreMap = {
   "Action": 28,
   "Adventure": 12,
@@ -74,6 +72,24 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("first result:", result.results[0].original_title);
     });
 });
+
+function displayMovies(movieData){
+    const results = document.getElementById("results");
+    results.innerHTML = ""; // Clear previous results
+
+    movieData.results.forEach(function(movie) {
+        results.innerHTML += `
+            <div class="movie-card>
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.original_title} poster">
+            <h3>${movie.original_title}</h3>
+            <p>Release Date: ${movie.release_date}</p>
+            <p>Rating: ${movie.vote_average}</p>
+            </div>
+        `;
+    });
+}
+displayMovies(data);
+
 
 
 //wheeeeellll
