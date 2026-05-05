@@ -33,6 +33,22 @@ const genreMap = {
   "Science Fiction": 878
 }
 
+const genres = [
+  "Action",
+  "Comedy",
+  "Horror",
+  "Crime",
+  "Drama",
+  "Romance",
+  "Science Fiction",
+  "Mystery",
+  "Crime",
+  "Adventure",
+  "Animation",
+  "Fantasy",
+];
+
+
 const options = {
     method: 'GET',
     headers: {
@@ -76,6 +92,7 @@ function displayMovies(movieData){
     results.innerHTML = ""; // Clear previous results
 
     movieData.results.forEach(function(movie) {
+        console.log("movie:", movie);
         results.innerHTML += `
             <div class="movie-card">
             <h3>${movie.original_title}</h3>
@@ -115,6 +132,34 @@ function wheelOfFortune(selector) {
       fill: 'forwards',
       iterations: 1
     });
+
+    
+    animation.onfinish = function() {
+      const finalDegree = newEndDegree % 360;
+      const sliceSize = 360 / genres.length;
+
+      // 🔑 adjust this if result is slightly off
+      const pointerOffset = 90;
+
+      //const adjustedDegree = (360 - finalDegree + pointerOffset) % 360;
+      const adjustedDegree =  (360 - finalDegree + pointerOffset + sliceSize / 2) % 360;
+        selectedIndex = Math.floor(adjustedDegree / sliceSize);
+
+      const selectedGenre = genres[selectedIndex];
+
+      // show result
+      // selectedGenreDiv.innerHTML = `<h2>You got: ${selectedGenre}</h2>`;
+        console.log("Spin result: ", selectedGenre);
+
+      // fetch movies
+      const genreId = genreMap[selectedGenre];
+      const url =
+        "https://api.themoviedb.org/3/discover/movie?with_genres=" + genreId;
+
+      getData(url, options).then(function(result) {
+        displayMovies(result);
+      });
+    };
 
     previousEndDegree = newEndDegree;
     console.log("End degree:", newEndDegree)
