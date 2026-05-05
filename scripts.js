@@ -1,6 +1,15 @@
 console.log("JS IS RUNNING ON THIS PAGE");
 
+// get the dropdown element from your HTML/
 const genreSelect = document.getElementById("genre-selection");
+
+//get the paragraph where you show the result
+const manualResult = document.getElementById("manual-result");
+
+//get the div where movies will be displayed
+const resultsDiv = document.getElementById("results");
+
+const apiKey = "YOUR_API_KEY";
 
 //console shows whatever user picked.
 genreSelect.addEventListener("change", function(){
@@ -89,8 +98,6 @@ function displayMovies(movieData){
     });
 }
 displayMovies(data);
-
-
 
 //wheeeeellll
 function wheelOfFortune(selector) {
