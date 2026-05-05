@@ -87,7 +87,6 @@ function displayMovies(movieData){
 }
 // had this before h3 tag <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.original_title} poster"></img>
 
-
 //wheeeeellll
 function wheelOfFortune(selector) {
   const node = document.querySelector(selector);
