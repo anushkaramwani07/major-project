@@ -9,13 +9,14 @@ const manualResult = document.getElementById("manual-result");
 //get the div where movies will be displayed
 const resultsDiv = document.getElementById("results");
 
-const apiKey = "YOUR_API_KEY";
+const apiKey = "ce9abacc48c7d1abc05b7ee6f534452a";
 
 //console shows whatever user picked.
 genreSelect.addEventListener("change", function(){
     const selectGenre = this.value;
 
     console.log("selected genre:", selectGenre);
+    fetchGenre(selectGenre);
 });
 
 const genreMap = {
@@ -29,12 +30,8 @@ const genreMap = {
   "Horror": 27,
   "Mystery": 9648,
   "Romance": 10749,
-  "Science Fiction": 878,
+  "Science Fiction": 878
 }
-// scripts for major project
-
-// first sign up for API Read Access Token and Key at https://www.themoviedb.org/settings/api
-// then use options copied from https://developer.themoviedb.org/reference/discover-movie
 
 const options = {
     method: 'GET',
@@ -59,28 +56,20 @@ async function getData(url, opts) {
         console.error(error);
     }
 }
-
-
 document.addEventListener("DOMContentLoaded", function () {
 
-    // get the list of genres and output to console
-    getData('https://api.themoviedb.org/3/genre/movie/list?language=en', options).then(function(result) {
+    
+});
 
-        console.log("genre list:", result);
-
-    });
-
-    // "comedy" is genre # 35, so if we search for that...
-    let genreNumber = 35;
+function fetchGenre(genreNumber) {
     let genreSearchURL = 'https://api.themoviedb.org/3/discover/movie?with_genres=' + genreNumber;
     getData(genreSearchURL, options).then(function(result) {
 
-        console.log("discover results:", result);
+        console.log("genre results:", result);
 
-        // find the first item in those results
-        console.log("first result:", result.results[0].original_title);
+        displayMovies(result);
     });
-});
+}
 
 function displayMovies(movieData){
     const results = document.getElementById("results");
@@ -88,8 +77,7 @@ function displayMovies(movieData){
 
     movieData.results.forEach(function(movie) {
         results.innerHTML += `
-            <div class="movie-card>
-            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.original_title} poster">
+            <div class="movie-card">
             <h3>${movie.original_title}</h3>
             <p>Release Date: ${movie.release_date}</p>
             <p>Rating: ${movie.vote_average}</p>
@@ -97,7 +85,8 @@ function displayMovies(movieData){
         `;
     });
 }
-displayMovies(data);
+// had this before h3 tag <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.original_title} poster"></img>
+
 
 //wheeeeellll
 function wheelOfFortune(selector) {
@@ -129,6 +118,7 @@ function wheelOfFortune(selector) {
     });
 
     previousEndDegree = newEndDegree;
+    console.log("End degree:", newEndDegree)
   });
 }
 
