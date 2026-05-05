@@ -9,6 +9,8 @@ genreSelect.addEventListener("change", function(){
     console.log("selected genre:", selectGenre);
 });
 
+
+
 const genreMap = {
   "Action": 28,
   "Adventure": 12,
@@ -71,10 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // find the first item in those results
         console.log("first result:", result.results[0].original_title);
     });
-
 });
 
 
+//wheeeeellll
 function wheelOfFortune(selector) {
   const node = document.querySelector(selector);
   if (!node) return;
