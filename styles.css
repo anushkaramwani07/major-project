@@ -182,3 +182,17 @@ site.header{
 #manual-selection{
     display: none;
 }
+
+#results{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 30px;
+}
+
+.movie-card {
+    background-color: #007474;
+    color: white;
+    border-radius: 10px;
+
+}
