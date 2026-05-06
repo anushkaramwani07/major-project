@@ -12,7 +12,7 @@ const resultsDiv = document.getElementById("results");
 const apiKey = "ce9abacc48c7d1abc05b7ee6f534452a";
 
 //console shows whatever user picked.
-genreSelect.addEventListener("change", function () {
+if (genreSelect) genreSelect.addEventListener("change", function () {
   const selectGenre = this.value;
 
   console.log("selected genre:", selectGenre);
@@ -95,13 +95,18 @@ function displayMovies(movieData) {
     console.log("movie:", movie);
     results.innerHTML += `
             <div class="movie-card">
-            <h3>${movie.original_title}</h3>
+            <h2>${movie.original_title}</h2>
+
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.original_title} poster" class="movie-poster">
             <p>Release Date: ${movie.release_date}</p>
             <p>Rating: ${movie.vote_average}</p>
+            <p class="description">Description: ${movie.overview}</p>
+
             </div>
         `;
   });
 }
+
 // had this before h3 tag <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.original_title} poster"></img>
 
 //wheeeeellll
