@@ -11,6 +11,8 @@ const resultsDiv = document.getElementById("results");
 
 const apiKey = "ce9abacc48c7d1abc05b7ee6f534452a";
 
+const posterURL = ""
+
 //console shows whatever user picked.
 if (genreSelect) genreSelect.addEventListener("change", function () {
   const selectGenre = this.value;
@@ -106,8 +108,6 @@ function displayMovies(movieData) {
         `;
   });
 }
-
-// had this before h3 tag <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.original_title} poster"></img>
 
 //wheeeeellll
 function wheelOfFortune(selector) {
