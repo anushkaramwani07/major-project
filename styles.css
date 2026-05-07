@@ -6,6 +6,20 @@ body{
     overflow-x: hidden;
 }
 
+.home-page{
+    background-image: url("image1.png");
+    background-size:cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.manual-page{
+    background-image: url("image2.png");
+    background-size:cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
 body:before{
     content: "";
     position: fixed;
