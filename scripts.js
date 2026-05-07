@@ -11,8 +11,6 @@ const resultsDiv = document.getElementById("results");
 
 const apiKey = "ce9abacc48c7d1abc05b7ee6f534452a";
 
-const posterURL = ""
-
 //console shows whatever user picked.
 if (genreSelect) genreSelect.addEventListener("change", function () {
   const selectGenre = this.value;
@@ -61,6 +59,7 @@ const options = {
 
 
 // function for getting JSON data and returning it
+//AJAX part:
 async function getData(url, opts) {
   try {
     const response = await fetch(url, opts);
@@ -138,7 +137,7 @@ function wheelOfFortune(selector) {
       iterations: 1
     });
 
-
+//used ChatGPT for this part to calculate!
     animation.onfinish = function () {
       const finalDegree = newEndDegree % 360;
       const sliceSize = 360 / genres.length;
@@ -173,4 +172,12 @@ function wheelOfFortune(selector) {
 
 wheelOfFortune('.ui-wheel-of-fortune');
 
+const selectedGenreTitle = document.getElementById("selected-genre-title");
+//will print teh grenre that User picked.
+genreSelect.addEventListener("change", function () {
+  const selectedGenre = this.value;
+  selectedGenreTitle.textContent = `Selected Genre: ${selectedGenre}`;
 
+  if(!selectedGenre) return ;
+    selectedGenreTitle.textContent = "Showing: " + selectedGenre;
+});
