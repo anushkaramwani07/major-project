@@ -9,6 +9,7 @@ const manualResult = document.getElementById("manual-result");
 //get the div where movies will be displayed
 const resultsDiv = document.getElementById("results");
 
+
 const apiKey = "ce9abacc48c7d1abc05b7ee6f534452a";
 
 //console shows whatever user picked.
@@ -84,7 +85,6 @@ function fetchGenre(genreNumber) {
 
     console.log("genre results:", result);
 
-    displayMovies(result);
   });
 }
 
@@ -137,7 +137,7 @@ function wheelOfFortune(selector) {
       iterations: 1
     });
 
-//used ChatGPT for this part to calculate!
+    //used ChatGPT for this part to calculate!
     animation.onfinish = function () {
       const finalDegree = newEndDegree % 360;
       const sliceSize = 360 / genres.length;
@@ -154,7 +154,9 @@ function wheelOfFortune(selector) {
       // show result
       // selectedGenreDiv.innerHTML = `<h2>You got: ${selectedGenre}</h2>`;
       console.log("Spin result: ", selectedGenre);
-
+      if (selectedGenreTitle) {
+        selectedGenreTitle.textContent = "You got:" + selectedGenre;
+      }
       // fetch movies
       const genreId = genreMap[selectedGenre];
       const url =
@@ -178,6 +180,6 @@ genreSelect.addEventListener("change", function () {
   const selectedGenre = this.value;
   selectedGenreTitle.textContent = `Selected Genre: ${selectedGenre}`;
 
-  if(!selectedGenre) return ;
-    selectedGenreTitle.textContent = "Showing: " + selectedGenre;
+  if (!selectedGenre) return;
+  selectedGenreTitle.textContent = "Showing: " + selectedGenre;
 });
