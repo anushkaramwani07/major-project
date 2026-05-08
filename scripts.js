@@ -20,6 +20,7 @@ if (genreSelect) genreSelect.addEventListener("change", function () {
   fetchGenre(selectGenre);
 });
 
+//names to TMDB genre ID number.
 const genreMap = {
   "Action": 28,
   "Adventure": 12,
@@ -34,6 +35,7 @@ const genreMap = {
   "Science Fiction": 878
 }
 
+//Genres used in the spin wheel.
 const genres = [
   "Action",
   "Comedy",
@@ -49,7 +51,7 @@ const genres = [
   "Fantasy",
 ];
 
-
+//TMDB API authoriziation options.
 const options = {
   method: 'GET',
   headers: {
@@ -155,7 +157,7 @@ function wheelOfFortune(selector) {
       // selectedGenreDiv.innerHTML = `<h2>You got: ${selectedGenre}</h2>`;
       console.log("Spin result: ", selectedGenre);
       if (selectedGenreTitle) {
-        selectedGenreTitle.textContent = "You got:" + selectedGenre;
+        selectedGenreTitle.textContent = "You got: " + selectedGenre;
       }
       // fetch movies
       const genreId = genreMap[selectedGenre];
