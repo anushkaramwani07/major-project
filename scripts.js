@@ -160,9 +160,12 @@ function wheelOfFortune(selector) {
       // show result
       // selectedGenreDiv.innerHTML = `<h2>You got: ${selectedGenre}</h2>`;
       console.log("Spin result: ", selectedGenre);
+
+      
       if (selectedGenreTitle) {
         selectedGenreTitle.textContent = "You got: " + selectedGenre;
       }
+      
       // fetch movies
       const genreId = genreMap[selectedGenre];
       const url =
@@ -175,31 +178,18 @@ function wheelOfFortune(selector) {
 
     previousEndDegree = newEndDegree;
     console.log("End degree:", newEndDegree)
+  
   });
 }
 
 wheelOfFortune('.ui-wheel-of-fortune');
 
 
-
-//will print the genre that User picked.
-
-//ADDED THIS TO SE EIF IT'D WORK!
-//if(genreSelect && selectedGenreTitle) {
-  //genreSelect.addEventListener("change", function () {
-    //const selectedGenreText = this.options[this.selectedIndex].text;
-
-    //if(!this.value) return;
-
-    //selectedGenreTitle.textContent = "Showing" + selectedGenreText;
-  //});
-  //}
-
+//for manual dropdown selection.
 genreSelect.addEventListener("change", function () {
 const selectedGenre = this.options[this.selectedIndex].text;
 
 if (!selectedGenre) return;
 console.log("Selected genre:", selectedGenre);
  selectedGenreTitle.textContent = `Selected Genre: ${selectedGenre}`;
- displayMovies(data.results);
 });
