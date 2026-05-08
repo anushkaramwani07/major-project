@@ -9,6 +9,8 @@ const manualResult = document.getElementById("manual-result");
 //get the div where movies will be displayed
 const resultsDiv = document.getElementById("results");
 
+//MOVED THIS FROM THE BOTTOM.
+const selectedGenreTitle = document.getElementById("selected-genre-title");
 
 const apiKey = "ce9abacc48c7d1abc05b7ee6f534452a";
 
@@ -87,6 +89,9 @@ function fetchGenre(genreNumber) {
 
     console.log("genre results:", result);
 
+
+    //JUST ADDED THIS!
+    displayMovies(result);
   });
 }
 
@@ -175,12 +180,26 @@ function wheelOfFortune(selector) {
 
 wheelOfFortune('.ui-wheel-of-fortune');
 
-const selectedGenreTitle = document.getElementById("selected-genre-title");
-//will print teh grenre that User picked.
-genreSelect.addEventListener("change", function () {
-  const selectedGenre = this.value;
-  selectedGenreTitle.textContent = `Selected Genre: ${selectedGenre}`;
 
-  if (!selectedGenre) return;
-  selectedGenreTitle.textContent = "Showing: " + selectedGenre;
+
+//will print the genre that User picked.
+
+//ADDED THIS TO SE EIF IT'D WORK!
+//if(genreSelect && selectedGenreTitle) {
+  //genreSelect.addEventListener("change", function () {
+    //const selectedGenreText = this.options[this.selectedIndex].text;
+
+    //if(!this.value) return;
+
+    //selectedGenreTitle.textContent = "Showing" + selectedGenreText;
+  //});
+  //}
+
+genreSelect.addEventListener("change", function () {
+const selectedGenre = this.value;
+
+if (!selectedGenre) return;
+console.log("Selected genre:", selectedGenre);
+ selectedGenreTitle.textContent = `Selected Genre: ${selectedGenre}`;
+ displayMovies(data.results);
 });
