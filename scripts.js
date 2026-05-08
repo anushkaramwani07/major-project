@@ -92,7 +92,7 @@ function fetchGenre(genreNumber) {
 
 function displayMovies(movieData) {
   const results = document.getElementById("results");
-  results.innerHTML = ""; // Clear previous results
+  results.innerHTML = ""; 
 
   movieData.results.forEach(function (movie) {
     console.log("movie:", movie);
@@ -144,7 +144,6 @@ function wheelOfFortune(selector) {
       const finalDegree = newEndDegree % 360;
       const sliceSize = 360 / genres.length;
 
-      // 🔑 adjust this if result is slightly off
       const pointerOffset = 90;
 
       //const adjustedDegree = (360 - finalDegree + pointerOffset) % 360;
