@@ -7,6 +7,22 @@ body{
     overflow-x: hidden;
 }
 
+.hero-text{
+    text-align: center;
+    color:white;
+    padding: 80px 20px;
+}
+
+.hero-text h1{
+    font-family: "Mogra", cursive;
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+.hero-text p{
+    font-family: "Playfair Display", serif;
+    font-size: 1.5rem;
+}
+
 .home-page{
     background-image: url("image1.png");
     background-size:cover;
@@ -200,6 +216,16 @@ body:before{
     color: white;
     border-radius: 10px;
     padding: 10px;
+}
+
+.movie-card h2{
+    font-family: "Mogra", cursive;
+    font-size: 1.5rem;
+}
+
+.movie-card p{
+    font-family: "Titillium Web", sans-serif;
+    line-height: 1.5;
 }
 
 .movie-poster {
