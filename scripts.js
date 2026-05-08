@@ -196,7 +196,7 @@ wheelOfFortune('.ui-wheel-of-fortune');
   //}
 
 genreSelect.addEventListener("change", function () {
-const selectedGenre = this.value;
+const selectedGenre = this.options[this.selectedIndex].text;
 
 if (!selectedGenre) return;
 console.log("Selected genre:", selectedGenre);
