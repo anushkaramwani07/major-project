@@ -107,7 +107,7 @@ function displayMovies(movieData) {
 
             <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.original_title} poster" class="movie-poster">
             <p>Release Date: ${movie.release_date}</p>
-            <p>Rating: ${movie.vote_average}</p>
+            <p>⭐: ${Number(movie.vote_average) ===0? "Not rated yet": Number(movie.vote_average).toFixed(1) + "/10"}</p>
             <p class="description">Description: ${movie.overview}</p>
 
             </div>
