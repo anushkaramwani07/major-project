@@ -42,6 +42,10 @@ body{
 }
 
 
+.spin-page{
+    background-color: #05998c;
+
+}
 /*Whats Z-index doing? and the annimation doesnt work!*/
 body:before{
     content: "";
