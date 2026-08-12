@@ -9,8 +9,14 @@ const manualResult = document.getElementById("manual-result");
 //get the div where movies will be displayed
 const resultsDiv = document.getElementById("results");
 
+//gets the movie results container
+const movieFilter = document.getElementById("movie-filter");
+
 //MOVED THIS FROM THE BOTTOM.
 const selectedGenreTitle = document.getElementById("selected-genre-title");
+
+//to keep track of the movies to filter.
+let currentMovies=[];
 
 const apiKey = "ce9abacc48c7d1abc05b7ee6f534452a";
 
@@ -96,6 +102,7 @@ function fetchGenre(genreNumber) {
 }
 
 function displayMovies(movieData) {
+  currentMovies = movieData.results;
   const results = document.getElementById("results");
   results.innerHTML = ""; 
 
@@ -114,8 +121,27 @@ function displayMovies(movieData) {
         `;
   });
 }
+//A-Z filter
+movieFilter.addEventListener("change", function(){
 
-//wheeeeellll
+  if (this.value ==="az"){
+    const sortedMovies = [...currentMovies].sort(function (a, b){
+      return a.original_title.localeCompare(b.original_title);
+    });
+    displayMovies({results: sortedMovies});
+  }
+// this will filter the ratintgs from Low to High.
+  if(this.value ==="rating-asc"){
+
+    const sortedMovies = [...currentMovies].sort(function (a, b){
+      return Number(a.vote_average) - Number(b.vote_average);
+    });
+    displayMovies({ results: sortedMovies});
+  }
+});
+ 
+
+//wheel
 function wheelOfFortune(selector) {
   const node = document.querySelector(selector);
   if (!node) return;
