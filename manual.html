@@ -15,33 +15,31 @@
         <nav class="nav-links">
             <a href="index.html">Home</a>
             <a href="spin.html">Spin the wheel</a>
-            <div class="manual-picker">
-                <select id="genre-selection" class="nav-dropdown">
-                    <option value="">Pick Manually</option>
-                    <option value="28">ACTION</option>
-                    <option value="35">COMEDY</option>
-                    <option value="27">HORROR</option>
-                    <option value="80">CRIME</option>
-                    <option value="18">DRAMA</option>
-                    <option value="10749">ROMANCE</option>
-                    <option value="878">SCIENCE FICTION</option>
-                    <option value="9648">MYSTERY</option>
-                    <option value="12">ADVENTURE</option>
-                    <option value="16">ANIMATION</option>
-                    <option value="14">FANTASY</option>
-                </select>
-
-                <p id="manual-result"></p>
-            </div>
+            <a href="manual.html">Pick Manually</a>
         </nav>
     </header>
-<!-- to print everything like title, release date, ratings and all. -->
-<!--JUST ADDED THIS--> 
-<h2 id="selected-genre-title"></h2>
-<div id="results"></div>
+    <section class="manual-page">
+        <h2>Pick a Genre </h2>
+        <div class="genre-buttons">
+            <button data-genre="28">ACTION</button>
+            <button data-genre="35">COMEDY</button>
+            <button data-genre="27">HORROR</button>
+            <button data-genre="80">CRIME</button>
+            <button data-genre="18">DRAMA</button>
+            <button data-genre="10749">ROMANCE</button>
+            <button data-genre="878">SCIENCE FICTION</button>
+            <button data-genre="9648">MYSTERY</button>
+            <button data-genre="12">ADVENTURE</button>
+            <button data-genre="16">ANIMATION</button>
+            <button data-genre="14">FANTASY</button>
+        </div>
+    </section>
 
-<!-- keep this in here cause all the HTML elements would be loaded by this time! -->
-    <script src="scripts.js"></script>
+        <h2 id="selected-genre-title"></h2>
+        <div id="results"></div>
+
+        <!-- keep this in here cause all the HTML elements would be loaded by this time! -->
+        <script src="scripts.js"></script>
 </body>
 
 </html>
