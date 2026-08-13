@@ -16,7 +16,7 @@ const movieFilter = document.getElementById("movie-filter");
 const selectedGenreTitle = document.getElementById("selected-genre-title");
 
 //to keep track of the movies to filter.
-let currentMovies=[];
+let currentMovies = [];
 
 const apiKey = "ce9abacc48c7d1abc05b7ee6f534452a";
 
@@ -104,7 +104,7 @@ function fetchGenre(genreNumber) {
 function displayMovies(movieData) {
   currentMovies = movieData.results;
   const results = document.getElementById("results");
-  results.innerHTML = ""; 
+  results.innerHTML = "";
 
   movieData.results.forEach(function (movie) {
     console.log("movie:", movie);
@@ -114,32 +114,48 @@ function displayMovies(movieData) {
 
             <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.original_title} poster" class="movie-poster">
             <p>Release Date: ${movie.release_date}</p>
-            <p>⭐: ${Number(movie.vote_average) ===0? "Not rated yet": Number(movie.vote_average).toFixed(1) + "/10"}</p>
+            <p>⭐: ${Number(movie.vote_average) === 0 ? "Not rated yet" : Number(movie.vote_average).toFixed(1) + "/10"}</p>
             <p class="description">Description: ${movie.overview}</p>
 
             </div>
         `;
   });
 }
-//A-Z filter
-movieFilter.addEventListener("change", function(){
 
-  if (this.value ==="az"){
-    const sortedMovies = [...currentMovies].sort(function (a, b){
+movieFilter.addEventListener("change", function () {
+  //A-Z filter
+  if (this.value === "az") {
+    const sortedMovies = [...currentMovies].sort(function (a, b) {
       return a.original_title.localeCompare(b.original_title);
     });
-    displayMovies({results: sortedMovies});
+    displayMovies({ results: sortedMovies });
   }
-// this will filter the ratintgs from Low to High.
-  if(this.value ==="rating-asc"){
+  // this will filter the ratintgs from Low to High.
+  if (this.value === "rating-asc") {
 
-    const sortedMovies = [...currentMovies].sort(function (a, b){
+    const sortedMovies = [...currentMovies].sort(function (a, b) {
       return Number(a.vote_average) - Number(b.vote_average);
     });
-    displayMovies({ results: sortedMovies});
+    displayMovies({ results: sortedMovies });
+  }
+  //to filter the ratings from High to Low
+  if (this.value === "rating-desc") {
+
+    const sortedMovies = [...currentMovies].sort(function (a, b) {
+      return Number(b.vote_average) - Number(a.vote_average);
+    });
+    displayMovies({ results: sortedMovies });
+  }
+  //will list all the Hollywood Movies
+  if (this.value === "hollywood") {
+    const filteredMovies = currentMovies.filter(function (movie) {
+      console.log(movie);
+      return movie.original_language === "en";
+    });
+    displayMovies({ results: filteredMovies });
   }
 });
- 
+
 
 //wheel
 function wheelOfFortune(selector) {
@@ -187,11 +203,11 @@ function wheelOfFortune(selector) {
       // selectedGenreDiv.innerHTML = `<h2>You got: ${selectedGenre}</h2>`;
       console.log("Spin result: ", selectedGenre);
 
-      
+
       if (selectedGenreTitle) {
         selectedGenreTitle.textContent = "You got: " + selectedGenre;
       }
-      
+
       // fetch movies
       const genreId = genreMap[selectedGenre];
       const url =
@@ -204,7 +220,7 @@ function wheelOfFortune(selector) {
 
     previousEndDegree = newEndDegree;
     console.log("End degree:", newEndDegree)
-  
+
   });
 }
 
@@ -213,9 +229,9 @@ wheelOfFortune('.ui-wheel-of-fortune');
 
 //for manual dropdown selection.
 genreSelect.addEventListener("change", function () {
-const selectedGenre = this.options[this.selectedIndex].text;
+  const selectedGenre = this.options[this.selectedIndex].text;
 
-if (!selectedGenre) return;
-console.log("Selected genre:", selectedGenre);
- selectedGenreTitle.textContent = `Selected Genre: ${selectedGenre}`;
+  if (!selectedGenre) return;
+  console.log("Selected genre:", selectedGenre);
+  selectedGenreTitle.textContent = `Selected Genre: ${selectedGenre}`;
 });
