@@ -1,8 +1,5 @@
 console.log("JS IS RUNNING ON THIS PAGE");
 
-// get the dropdown element from your HTML/
-const genreSelect = document.getElementById("genre-selection");
-
 //get the paragraph where you show the result
 const manualResult = document.getElementById("manual-result");
 
@@ -20,13 +17,13 @@ let currentMovies = [];
 
 const apiKey = "ce9abacc48c7d1abc05b7ee6f534452a";
 
+// DELETE THIS if the manual selection works!
 //console shows whatever user picked.
-if (genreSelect) genreSelect.addEventListener("change", function () {
-  const selectGenre = this.value;
-
-  console.log("selected genre:", selectGenre);
-  fetchGenre(selectGenre);
-});
+//if (genreSelect) genreSelect.addEventListener("change", function () {
+  //const selectGenre = this.value;
+  //console.log("selected genre:", selectGenre);
+  //fetchGenre(selectGenre);
+//});
 
 //names to TMDB genre ID number.
 const genreMap = {
@@ -122,7 +119,7 @@ function displayMovies(movieData) {
   });
 }
 
-movieFilter.addEventListener("change", function () {
+if (movieFilter) movieFilter.addEventListener("change", function () {
   //A-Z filter
   if (this.value === "az") {
     const sortedMovies = [...currentMovies].sort(function (a, b) {
@@ -227,11 +224,23 @@ function wheelOfFortune(selector) {
 wheelOfFortune('.ui-wheel-of-fortune');
 
 
-//for manual dropdown selection.
-genreSelect.addEventListener("change", function () {
-  const selectedGenre = this.options[this.selectedIndex].text;
+const genreButtons = document.querySelectorAll(".genre-buttons button");
+genreButtons.forEach(function (button){
 
-  if (!selectedGenre) return;
-  console.log("Selected genre:", selectedGenre);
-  selectedGenreTitle.textContent = `Selected Genre: ${selectedGenre}`;
+  button.addEventListener("click", function(){
+    const genreNumber = this.dataset.genre;
+    console.log("Selected genre: ", genreNumber);
+    fetchGenre(genreNumber);
+    selectedGenreTitle.textContent = "Selected Genre " + this.textContent;
+  });
 });
+
+//DELETE THIS IF the manual selection works!
+//for manual dropdown selection.
+// genreSelect.addEventListener("change", function () {
+//   const selectedGenre = this.options[this.selectedIndex].text;
+
+//   if (!selectedGenre) return;
+//   console.log("Selected genre:", selectedGenre);
+//   selectedGenreTitle.textContent = `Selected Genre: ${selectedGenre}`;
+//});
